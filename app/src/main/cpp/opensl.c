@@ -105,13 +105,32 @@ void createRecorder(OpenSLEngine *engine, int sampleRate, int numChannel, int bu
 
     SLInterfaceID ids[] = {SL_IID_ANDROIDSIMPLEBUFFERQUEUE};
     SLboolean reqs[] = {SL_BOOLEAN_TRUE};
-    (*engine->engineItf)->CreateAudioRecorder(engine->engineItf, &(engine->recorderObj), &dataSrc,
+    SLresult result;
+
+    result = (*engine->engineItf)->CreateAudioRecorder(engine->engineItf, &(engine->recorderObj), &dataSrc,
                                               &dataSnk, 1, ids, reqs);
-    (*engine->recorderObj)->Realize(engine->recorderObj, SL_BOOLEAN_FALSE);
-    (*engine->recorderObj)->GetInterface(engine->recorderObj, SL_IID_RECORD,
-                                         &(engine->recorderItf));
-    (*engine->recorderObj)->GetInterface(engine->recorderObj, SL_IID_ANDROIDSIMPLEBUFFERQUEUE,
-                                         &(engine->recorderBufferQueueItf));
+    if (result != SL_RESULT_SUCCESS) {
+        printf("CreateAudioRecorder failed: %d\n", result);
+        return;
+    }
+
+    result = (*engine->recorderObj)->Realize(engine->recorderObj, SL_BOOLEAN_FALSE);
+    if (result != SL_RESULT_SUCCESS) {
+        printf("Realize recorderObj failed: %d\n", result);
+        return;
+    }
+
+    result = (*engine->recorderObj)->GetInterface(engine->recorderObj, SL_IID_RECORD, &(engine->recorderItf));
+    if (result != SL_RESULT_SUCCESS) {
+        printf("GetInterface SL_IID_RECORD failed: %d\n", result);
+        return;
+    }
+
+    result = (*engine->recorderObj)->GetInterface(engine->recorderObj, SL_IID_ANDROIDSIMPLEBUFFERQUEUE, &(engine->recorderBufferQueueItf));
+    if (result != SL_RESULT_SUCCESS || engine->recorderBufferQueueItf == NULL) {
+        printf("GetInterface SL_IID_ANDROIDSIMPLEBUFFERQUEUE failed: %d\n", result);
+        return;
+    }
     (*engine->recorderBufferQueueItf)->RegisterCallback(engine->recorderBufferQueueItf,
                                                         recordCallback, engine);
     (*engine->recorderItf)->SetRecordState(engine->recorderItf, SL_RECORDSTATE_RECORDING);

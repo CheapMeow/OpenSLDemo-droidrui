@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/repo/OpenSLDemo/app/.cxx/Debug/3p5i6a13/arm64-v8a",
+  "command": "C:\\Users\\cheaplian\\AppData\\Local\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=aarch64-none-linux-android21 --sysroot=C:/Users/cheaplian/AppData/Local/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Daudio_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIC -o CMakeFiles\\audio.dir\\jni_audio.c.o -c C:\\repo\\OpenSLDemo\\app\\src\\main\\cpp\\jni_audio.c",
+  "file": "C:\\repo\\OpenSLDemo\\app\\src\\main\\cpp\\jni_audio.c"
+},
+{
+  "directory": "C:/repo/OpenSLDemo/app/.cxx/Debug/3p5i6a13/arm64-v8a",
+  "command": "C:\\Users\\cheaplian\\AppData\\Local\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=aarch64-none-linux-android21 --sysroot=C:/Users/cheaplian/AppData/Local/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Daudio_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIC -o CMakeFiles\\audio.dir\\opensl.c.o -c C:\\repo\\OpenSLDemo\\app\\src\\main\\cpp\\opensl.c",
+  "file": "C:\\repo\\OpenSLDemo\\app\\src\\main\\cpp\\opensl.c"
+}
+]
